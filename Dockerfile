@@ -18,7 +18,7 @@ WORKDIR /tmp/keycloak
 # Install Maven
 RUN dnf install maven --releasever 9 --setopt install_weak_deps=false --nodocs -y; dnf clean all
 
-RUN mvn clean install -DskipTests
+RUN mvn clean install -Pdistribution -DskipTests
 
 # Building keyclaok-metrics-spi extension on top of Keycloak custom image
 FROM keycloak-builder as metrics-spi-builder
